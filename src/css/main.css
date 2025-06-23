@@ -1,0 +1,179 @@
+/* css/main.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* --- THEME VARIABLES --- */
+:root {
+    --bg-color: #f9fafb;
+    --text-color: #111827;
+    --card-bg-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --border-color: #e5e7eb;
+    --subtitle-color: #6b7280;
+    --accent-color: #4f46e5;
+    --accent-color-hover: #4338ca;
+}
+
+html[data-theme="dark"] {
+    --bg-color: #111827;
+    --text-color: #f9fafb;
+    --card-bg-color: #1f2937;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --border-color: #374151;
+    --subtitle-color: #9ca3af;
+}
+
+/* --- BASE STYLES --- */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.page-container {
+    max-width: 1100px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3 { font-weight: 700; color: var(--text-color); }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.25rem; }
+p { line-height: 1.7; color: var(--subtitle-color); }
+main > section { width: 100%; margin-bottom: 6rem; }
+
+/* --- HERO SECTION --- */
+.hero {
+    text-align: center;
+    padding: 6rem 0;
+    width: 100%;
+}
+.hero-title {
+    font-size: 3.75rem;
+    background: linear-gradient(to right, var(--accent-color), #a26df5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+.subtitle { font-size: 1.25rem; max-width: 650px; margin: 1rem auto 2.5rem; }
+.hero-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+.hero-button:hover { background-color: var(--accent-color-hover); }
+
+/* --- THEME TOGGLE --- */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+#theme-toggle:hover { transform: scale(1.1); }
+#theme-toggle svg { width: 20px; height: 20px; stroke: var(--text-color); }
+#theme-toggle .moon { display: none; }
+html[data-theme="dark"] #theme-toggle .sun { display: none; }
+html[data-theme="dark"] #theme-toggle .moon { display: block; }
+
+/* --- DOWNLOAD SECTION --- */
+#download { text-align: center; }
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.download-card {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+.download-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px var(--shadow-color);
+    border-color: var(--accent-color);
+}
+.download-card .logo { width: 32px; height: 32px; }
+.download-card .logo svg { width: 100%; height: 100%; }
+
+/* Dropdown */
+.dropdown { position: relative; cursor: pointer; }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+.dropdown.active .dropdown-content { display: block; }
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+}
+.dropdown-content a:hover { background-color: var(--accent-color); color: white; }
+
+/* --- INFO SECTION --- */
+.features { text-align: center; }
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+.info-card {
+    background: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+.info-icon {
+    display: inline-flex;
+    padding: 0.75rem;
+    border-radius: 6px;
+    background-color: var(--accent-color);
+    color: white;
+    margin-bottom: 1rem;
+}
+.info-icon svg { width: 24px; height: 24px; stroke: white; }
