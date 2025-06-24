@@ -134,7 +134,6 @@ The XutronCore project simplifies application management by providing a single, 
 
 This repository is primarily for distributing the launcher and hosting the website. Contributions to the launcher or the individual apps should be made in their respective repositories.
 
-*   **[XutronCore-Launcher Repository](https://github.com/iamplayerexe/xutroncore-launcher)**
 *   **[AnimeList Repository](https://github.com/iamplayerexe/animelist)**
 *   **[PasswordGenerator Repository](https://github.com/iamplayerexe/password_generator)**
 *   **[ZipAnalyser Repository](https://github.com/iamplayerexe/zip_analyser)**
