@@ -1,4 +1,4 @@
-// js/main.js
+// src/js/main.js
 
 // --- THEME TOGGLE LOGIC ---
 const themeToggle = document.getElementById('theme-toggle');
@@ -15,15 +15,13 @@ themeToggle.addEventListener('click', () => {
 });
 
 
-// --- DOWNLOAD LINK & DROPDOWN LOGIC ---
+// --- PAGE LOGIC ---
 document.addEventListener('DOMContentLoaded', () => {
     // --- Download Links ---
     const latestVersion = "1.0.0";
     const baseUrl = "https://github.com/iamplayerexe/XutronCore-launcher/releases/download/v" + latestVersion;
     
-    const versionSpan = document.getElementById('latest-version');
-    if (versionSpan) versionSpan.innerText = latestVersion;
-
+    document.getElementById('latest-version').innerText = latestVersion;
     document.getElementById('win-link').href = `${baseUrl}/XutronCore-Launcher-Setup-${latestVersion}.exe`;
     document.getElementById('mac-link').href = `${baseUrl}/XutronCore-Launcher-${latestVersion}.dmg`;
     document.getElementById('linux-deb-link').href = `${baseUrl}/xutroncore-launcher_${latestVersion}_amd64.deb`;
@@ -31,16 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dropdown on Click Logic ---
     const linuxDropdownBtn = document.getElementById('linux-dropdown-btn');
-    linuxDropdownBtn.addEventListener('click', (event) => {
-        if (event.target.tagName !== 'A') {
-            event.preventDefault();
-        }
-        linuxDropdownBtn.classList.toggle('active');
-    });
+    if (linuxDropdownBtn) {
+        linuxDropdownBtn.addEventListener('click', (event) => {
+            if (event.target.tagName !== 'A') {
+                event.preventDefault();
+            }
+            linuxDropdownBtn.classList.toggle('active');
+        });
 
-    document.addEventListener('click', (event) => {
-        if (!linuxDropdownBtn.contains(event.target)) {
-            linuxDropdownBtn.classList.remove('active');
-        }
-    });
+        document.addEventListener('click', (event) => {
+            if (!linuxDropdownBtn.contains(event.target)) {
+                linuxDropdownBtn.classList.remove('active');
+            }
+        });
+    }
+
+    // --- NEW: Copyright Year Logic ---
+    const yearSpan = document.getElementById('copyright-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });

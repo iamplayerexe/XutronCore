@@ -1,8 +1,6 @@
-/* css/main.css */
-
+/* src/css/main.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* --- THEME VARIABLES --- */
 :root {
     --bg-color: #f9fafb;
     --text-color: #111827;
@@ -12,6 +10,13 @@
     --subtitle-color: #6b7280;
     --accent-color: #4f46e5;
     --accent-color-hover: #4338ca;
+    
+    --sun-color: #f59e0b;
+    --moon-color: #818cf8;
+
+    --color-windows: #00a4ef;
+    --color-macos: #555555; /* Dark Grey */
+    --color-linux: #de9b1a;
 }
 
 html[data-theme="dark"] {
@@ -23,13 +28,14 @@ html[data-theme="dark"] {
     --subtitle-color: #9ca3af;
 }
 
-/* --- BASE STYLES --- */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
     transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    justify-content: center;
 }
 
 .page-container {
@@ -41,18 +47,14 @@ body {
     align-items: center;
 }
 
-h1, h2, h3 { font-weight: 700; color: var(--text-color); }
+h1, h2, h3 { font-weight: 700; color: var(--text-color); transition: color 0.2s ease; }
 h2 { font-size: 2.25rem; }
 h3 { font-size: 1.25rem; }
+.section-title { text-align: center; }
 p { line-height: 1.7; color: var(--subtitle-color); }
 main > section { width: 100%; margin-bottom: 6rem; }
 
-/* --- HERO SECTION --- */
-.hero {
-    text-align: center;
-    padding: 6rem 0;
-    width: 100%;
-}
+.hero { text-align: center; padding: 4rem 0 0 0; width: 100%; }
 .hero-title {
     font-size: 3.75rem;
     background: linear-gradient(to right, var(--accent-color), #a26df5);
@@ -60,24 +62,13 @@ main > section { width: 100%; margin-bottom: 6rem; }
     -webkit-text-fill-color: transparent;
     margin: 0;
 }
-.subtitle { font-size: 1.25rem; max-width: 650px; margin: 1rem auto 2.5rem; }
-.hero-button {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-.hero-button:hover { background-color: var(--accent-color-hover); }
+.subtitle { font-size: 1.25rem; max-width: 650px; margin: 1rem auto 0; }
 
-/* --- THEME TOGGLE --- */
 #theme-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: var(--card-bg-color);
+    background-color: var(--card-bg-color);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     width: 40px;
@@ -91,24 +82,23 @@ main > section { width: 100%; margin-bottom: 6rem; }
     z-index: 1000;
 }
 #theme-toggle:hover { transform: scale(1.1); }
-#theme-toggle svg { width: 20px; height: 20px; stroke: var(--text-color); }
-#theme-toggle .moon { display: none; }
-html[data-theme="dark"] #theme-toggle .sun { display: none; }
-html[data-theme="dark"] #theme-toggle .moon { display: block; }
+#theme-toggle .sun-icon svg { stroke: var(--sun-color); }
+#theme-toggle .moon-icon svg { stroke: var(--moon-color); }
+#theme-toggle .moon-icon { display: none; }
+html[data-theme="dark"] #theme-toggle .sun-icon { display: none; }
+html[data-theme="dark"] #theme-toggle .moon-icon { display: block; }
 
-/* --- DOWNLOAD SECTION --- */
-#download { text-align: center; }
+#download { text-align: center; padding: 3rem 0; width: 100%;}
+.version-info { margin-top: 1.5rem; font-size: 0.9rem; color: var(--subtitle-color); }
 .download-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-top: 3rem;
 }
 .download-card {
-    background: var(--card-bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 2rem;
+    background: var(--bg-color);
+    border-radius: 4px;
+    padding: 1.5rem;
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
@@ -117,17 +107,23 @@ html[data-theme="dark"] #theme-toggle .moon { display: block; }
     justify-content: center;
     gap: 1rem;
     transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    border-bottom-width: 4px;
     box-shadow: 0 4px 6px var(--shadow-color);
 }
 .download-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px var(--shadow-color);
-    border-color: var(--accent-color);
 }
-.download-card .logo { width: 32px; height: 32px; }
-.download-card .logo svg { width: 100%; height: 100%; }
+.download-card .logo { width: 28px; height: 28px; }
+.windows { border-bottom-color: var(--color-windows); }
+.macos { border-bottom-color: var(--color-macos); }
+.linux { border-bottom-color: var(--color-linux); }
 
-/* Dropdown */
+.apple-light-icon { display: none; }
+html[data-theme="dark"] .apple-dark-icon { display: none; }
+html[data-theme="dark"] .apple-light-icon { display: block; }
+
 .dropdown { position: relative; cursor: pointer; }
 .dropdown-content {
     display: none;
@@ -138,9 +134,10 @@ html[data-theme="dark"] #theme-toggle .moon { display: block; }
     background-color: var(--card-bg-color);
     box-shadow: 0 8px 16px var(--shadow-color);
     z-index: 1;
-    border-radius: 6px;
+    border-radius: 4px;
     overflow: hidden;
     border: 1px solid var(--border-color);
+    text-align: left;
 }
 .dropdown.active .dropdown-content { display: block; }
 .dropdown-content a {
@@ -149,31 +146,90 @@ html[data-theme="dark"] #theme-toggle .moon { display: block; }
     text-decoration: none;
     display: block;
     transition: all 0.2s ease;
+    font-weight: normal;
 }
 .dropdown-content a:hover { background-color: var(--accent-color); color: white; }
 
-/* --- INFO SECTION --- */
-.features { text-align: center; }
+.features { /* Padding removed as requested */ }
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin-top: 3rem;
     text-align: left;
+    /* Margin-top removed as requested */
 }
 .info-card {
     background: var(--card-bg-color);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 4px 6px var(--shadow-color);
     border: 1px solid var(--border-color);
 }
-.info-icon {
-    display: inline-flex;
-    padding: 0.75rem;
-    border-radius: 6px;
-    background-color: var(--accent-color);
-    color: white;
-    margin-bottom: 1rem;
+.info-card h3 { margin: 0 0 0.5rem 0; color: var(--text-color); border: none; padding: 0; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
 }
-.info-icon svg { width: 24px; height: 24px; stroke: white; }
+.stat-card {
+    background-color: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.stat-label {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--subtitle-color);
+}
+.table-container {
+    background-color: var(--card-bg-color);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-top: 3rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+th, td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+th { font-weight: 600; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* --- THIS IS THE FIX --- */
+/* Target all table headers except the first one and center them */
+th:not(:first-child) {
+    text-align: center;
+}
+/* --- END OF FIX --- */
+
+td.check { color: #10b981; font-weight: bold; text-align: center; font-size: 1.25rem; }
+td.cross { color: #ef4444; font-weight: bold; text-align: center; font-size: 1.25rem; }
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--subtitle-color);
+}
