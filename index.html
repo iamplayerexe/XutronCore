@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XutronCore</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Canvas-Confetti Library for the celebration effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -24,7 +26,9 @@
         <main>
             <section id="download">
                 <h2>Download the Launcher</h2>
-                <div class="download-grid">
+                <!-- Status message for loading or errors -->
+                <p id="download-status">Fetching latest release...</p>
+                <div id="download-grid" class="download-grid hidden">
                     <a href="#" id="win-link" class="download-card windows">
                         <img class="logo" src="./src/assets/windows-icon.svg" alt="Windows OS">
                         <span>Install for Windows</span>
@@ -43,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                 <p class="version-info">Latest Launcher Version: <span id="latest-version">1.0.0</span></p>
+                 <p class="version-info">Latest Launcher Version: <span id="latest-version">...</span></p>
             </section>
             
             <section class="info-section features">
@@ -129,13 +133,21 @@
             </section>
         </main>
 
-        <!-- NEW FOOTER SECTION -->
         <footer>
             <p>Copyright © <span id="copyright-year"></span> Xutron. All Rights Reserved.</p>
         </footer>
-        <!-- END OF NEW FOOTER SECTION -->
 
     </div>
+
+    <!-- Progress Bar and Confetti Elements (Initially Hidden) -->
+    <div id="progress-container" class="hidden">
+        <p id="progress-label">Downloading...</p>
+        <div class="progress-bar-background">
+            <div id="progress-bar-fill"></div>
+        </div>
+    </div>
+    <canvas id="confetti-canvas"></canvas>
+
     <script src="./src/js/main.js"></script>
 </body>
 </html>
