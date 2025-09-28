@@ -7,7 +7,7 @@
 
 <p align="center">
   <!-- Website Badge -->
-  <a href="https://iamplayerexe.github.io/xutroncore/"><img src="https://img.shields.io/badge/Visit%20our%20Website-8A2BE2?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
+  <a href="https://iamplayerexe.github.io/XutronCore/"><img src="https://img.shields.io/badge/Visit%20our%20Website-8A2BE2?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
   <br/>
   <!-- Tech Stack Badges -->
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS"></a>
