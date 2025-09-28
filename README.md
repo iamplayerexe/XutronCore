@@ -1,3 +1,4 @@
+<!-- <-- comment (.md file)(README.md) -->
 <div align="center">
 
 # XutronCore 🚀
@@ -5,6 +6,9 @@
 </div>
 
 <p align="center">
+  <!-- Website Badge -->
+  <a href="https://iamplayerexe.github.io/xutroncore/"><img src="https://img.shields.io/badge/Visit%20our%20Website-8A2BE2?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website"></a>
+  <br/>
   <!-- Tech Stack Badges -->
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS"></a>
   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Electron-28.1.0-%2347848F.svg?style=for-the-badge&logo=electron&logoColor=white" alt="Electron"></a>
@@ -17,7 +21,7 @@
   <a href="https://github.com/iamplayerexe/xutroncore/releases"><img src="https://img.shields.io/github/v/release/iamplayerexe/xutroncore?style=for-the-badge" alt="Latest Launcher Release"></a>
 </p>
 
-> The central hub for the **XutronCore** application suite. This project provides the **XutronCore Launcher**, a unified, cross-platform tool designed to install, update, and manage all XutronCore applications seamlessly.
+> The central hub for the **XutronCore** application suite. This project provides the **XutronCore Launcher**, a unified tool for **Windows** designed to install, update, and manage all XutronCore applications seamlessly.
 
 ---
 
@@ -44,7 +48,7 @@
 ## ✨ Features Checklist
 
 -   [x] 🚀 **Unified Application Hub:** Discover, install, and launch all official XutronCore apps from one place.
--   [x] 🖥️ **Cross-Platform Support:** Native installers for **Windows**, **macOS**, and **Linux** (.deb).
+-   [x] 🖥️ **Windows Native:** An optimized installer for a smooth experience on Windows.
 -   [x] 🔄 **Automatic Updates:** The launcher automatically updates itself in the background, ensuring you always have the latest version.
 -   [x] 📦 **Seamless App Management:** One-click installation and uninstallation for all managed applications.
 -   [x] 💡 **Smart Status Detection:** Instantly see which apps are installed, running, or need an update.
@@ -67,8 +71,9 @@ The XutronCore project simplifies application management by providing a single, 
 
 ## 🚀 Getting Started
 
-1.  Go to the **[Latest Launcher Release Page](https://github.com/iamplayerexe/xutroncore/releases/latest)**.
-2.  Download the correct installer for your operating system from the **Assets** section.
+1.  Visit our **[Official Website](https://iamplayerexe.github.io/xutroncore/)** for the easiest download experience.
+2.  Alternatively, go to the **[Latest Launcher Release Page](https://github.com/iamplayerexe/xutroncore/releases/latest)**.
+3.  Download the installer from the **Assets** section.
 
 <details>
   <summary><strong>🪟 Windows Installation</strong></summary>
@@ -78,35 +83,6 @@ The XutronCore project simplifies application management by providing a single, 
     <li>Run the installer. You may be prompted to choose an installation directory.</li>
     <li>⚠️ <strong>Windows SmartScreen:</strong> If a warning appears, click "More info" → "Run anyway". This is standard for applications not signed with an expensive code-signing certificate.</li>
     <li>Launch **XutronCore Launcher** from your Start Menu or Desktop!</li>
-  </ol>
-</details>
-
-<details>
-  <summary><strong>🍎 macOS Installation</strong></summary>
-  <br/>
-  <ol>
-    <li>Download the file ending in <code>.dmg</code>.</li>
-    <li>Open the <code>.dmg</code> file. A new window will appear.</li>
-    <li>Drag the **XutronCore Launcher** app icon into your **Applications** folder shortcut within that window.</li>
-    <li>⚠️ <strong>First Launch:</strong> You may need to <strong>right-click</strong> the app icon in your Applications folder and select <strong>"Open"</strong>. If a warning appears, click the "Open" button on the dialog to proceed. You only need to do this once.</li>
-    <li>Launch the app normally from then on!</li>
-  </ol>
-</details>
-
-<details>
-  <summary><strong>🐧 Linux Installation (Debian/Ubuntu)</strong></summary>
-  <br/>
-  <ol>
-    <li>Download the file ending in <code>.deb</code>.</li>
-    <li><strong>To Install (GUI):</strong> Double-click the downloaded <code>.deb</code> file to open it with your system's software installer (like GDebi or Ubuntu Software) and click "Install".</li>
-    <li><strong>To Install (Terminal):</strong>
-        <ul>
-            <li>Navigate to your Downloads folder: <code>cd ~/Downloads</code></li>
-            <li>Run the installation command: <code>sudo dpkg -i XutronCore-Launcher-*.deb</code></li>
-            <li>If you encounter dependency errors, run: <code>sudo apt-get install -f</code></li>
-        </ul>
-    </li>
-    <li>Launch the app from your application menu.</li>
   </ol>
 </details>
 
@@ -130,16 +106,7 @@ The XutronCore project simplifies application management by providing a single, 
 
 ---
 
-## 🤝 Contributing
-
-This repository is primarily for distributing the launcher and hosting the website. Contributions to the launcher or the individual apps should be made in their respective repositories.
-
-*   **[AnimeList Repository](https://github.com/iamplayerexe/animelist)**
-*   **[PasswordGenerator Repository](https://github.com/iamplayerexe/password_generator)**
-*   **[ZipAnalyser Repository](https://github.com/iamplayerexe/zip_analyser)**
-
----
-
 ## 📜 License
 
 This project is distributed under the **MIT License**.
+<!-- <-- end comment (.md file)(README.md) -->
