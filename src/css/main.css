@@ -1,3 +1,4 @@
+/* <-- comment (.css file)(src/css/main.css) */
 /* src/css/main.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
@@ -29,6 +30,13 @@ html[data-theme="dark"] {
     --subtitle-color: #9ca3af;
 }
 
+/* --- Keyframe Animation for the new Shine Effect --- */
+@keyframes reflection-sweep {
+    from { background-position: 150% 0; }
+    to { background-position: -150% 0; }
+}
+
+
 body {
     font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg-color);
@@ -58,11 +66,33 @@ main > section { width: 100%; margin-bottom: 6rem; }
 .hero { text-align: center; padding: 4rem 0 0 0; width: 100%; }
 .hero-title {
     font-size: 3.75rem;
-    background: linear-gradient(to right, var(--accent-color), #a26df5);
+    /* Updated background for sweeping animation */
+    background: linear-gradient(100deg, var(--accent-color) 40%, #c4b5fd 50%, var(--accent-color) 60%);
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* Continuous animation */
+    animation: reflection-sweep 4s linear infinite;
+    /* Subtle base glow */
+    text-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
+    
     margin: 0;
+    transition: text-shadow 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
 }
+
+.hero-title:hover {
+    /* Pause the animation on hover */
+    animation-play-state: paused;
+    /* Apply a stronger, multi-layered neon glow */
+    text-shadow: 
+        0 0 7px rgba(196, 181, 253, 0.9), 
+        0 0 20px rgba(79, 70, 229, 0.9), 
+        0 0 40px rgba(79, 70, 229, 0.7);
+}
+
+
 .subtitle { font-size: 1.25rem; max-width: 650px; margin: 1rem auto 0; }
 
 #theme-toggle {
@@ -92,8 +122,8 @@ html[data-theme="dark"] #theme-toggle .moon-icon { display: block; }
 #download { text-align: center; padding: 3rem 0; width: 100%;}
 .version-info { margin-top: 1.5rem; font-size: 0.9rem; color: var(--subtitle-color); }
 .download-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 1.5rem;
 }
 .download-card {
@@ -111,6 +141,7 @@ html[data-theme="dark"] #theme-toggle .moon-icon { display: block; }
     border: 1px solid var(--border-color);
     border-bottom-width: 4px;
     box-shadow: 0 4px 6px var(--shadow-color);
+    min-width: 250px;
 }
 .download-card:hover {
     transform: translateY(-4px);
@@ -118,38 +149,6 @@ html[data-theme="dark"] #theme-toggle .moon-icon { display: block; }
 }
 .download-card .logo { width: 28px; height: 28px; }
 .windows { border-bottom-color: var(--color-windows); }
-.macos { border-bottom-color: var(--color-macos); }
-.linux { border-bottom-color: var(--color-linux); }
-
-.apple-light-icon { display: none; }
-html[data-theme="dark"] .apple-dark-icon { display: none; }
-html[data-theme="dark"] .apple-light-icon { display: block; }
-
-.dropdown { position: relative; cursor: pointer; }
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    right: 0;
-    background-color: var(--card-bg-color);
-    box-shadow: 0 8px 16px var(--shadow-color);
-    z-index: 1;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    text-align: left;
-}
-.dropdown.active .dropdown-content { display: block; }
-.dropdown-content a {
-    color: var(--text-color);
-    padding: 0.8rem 1rem;
-    text-decoration: none;
-    display: block;
-    transition: all 0.2s ease;
-    font-weight: normal;
-}
-.dropdown-content a:hover { background-color: var(--accent-color); color: white; }
 
 .features { /* Padding removed as requested */ }
 .info-grid {
@@ -292,3 +291,16 @@ footer p {
 .hidden {
     display: none !important;
 }
+
+/* --- Scroll Animation Styles --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* <-- end comment (.css file)(src/css/main.css) */

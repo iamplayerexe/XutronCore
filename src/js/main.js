@@ -1,3 +1,4 @@
+// <-- comment (.js file)(src/js/main.js)
 // src/js/main.js
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -92,10 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const assets = release.assets;
             const downloadUrls = {
-                windows: assets.find(asset => asset.name.endsWith('.exe'))?.browser_download_url,
-                macos: assets.find(asset => asset.name.endsWith('.dmg'))?.browser_download_url,
-                deb: assets.find(asset => asset.name.endsWith('.deb'))?.browser_download_url,
-                rpm: assets.find(asset => asset.name.endsWith('.rpm'))?.browser_download_url
+                windows: assets.find(asset => asset.name.endsWith('.exe'))?.browser_download_url
             };
 
             updateDownloadLinks(latestVersion, downloadUrls);
@@ -116,9 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateDownloadLinks = (version, urls) => {
         const latestVersionEl = document.getElementById('latest-version');
         const winLinkEl = document.getElementById('win-link');
-        const macLinkEl = document.getElementById('mac-link');
-        const linuxDebLinkEl = document.getElementById('linux-deb-link');
-        const linuxRpmLinkEl = document.getElementById('linux-rpm-link');
         const downloadGrid = document.getElementById('download-grid');
         const statusMessage = document.getElementById('download-status');
 
@@ -136,9 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         setupButton(winLinkEl, urls.windows);
-        setupButton(macLinkEl, urls.macos);
-        setupButton(linuxDebLinkEl, urls.deb);
-        setupButton(linuxRpmLinkEl, urls.rpm);
 
         if (statusMessage) {
             statusMessage.classList.add('hidden');
@@ -148,29 +140,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Dropdown on Click Logic ---
-    const linuxDropdownBtn = document.getElementById('linux-dropdown-btn');
-    if (linuxDropdownBtn) {
-        linuxDropdownBtn.addEventListener('click', (event) => {
-            if (event.target.tagName !== 'A') {
-                event.preventDefault();
-            }
-            linuxDropdownBtn.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!linuxDropdownBtn.contains(event.target)) {
-                linuxDropdownBtn.classList.remove('active');
-            }
-        });
-    }
-
     // --- Copyright Year Logic ---
     const yearSpan = document.getElementById('copyright-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // --- SCROLL FADE-IN/OUT ANIMATION ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // If the element is intersecting (on-screen), add the 'visible' class
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                // Otherwise, remove it to fade it out
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    const sectionsToAnimate = document.querySelectorAll('.fade-in-section');
+    sectionsToAnimate.forEach(section => {
+        observer.observe(section);
+    });
+
     // --- INITIATE THE FETCH ---
     fetchLatestRelease();
 });
+// <-- end comment (.js file)(src/js/main.js)
